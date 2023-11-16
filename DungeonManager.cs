@@ -27,10 +27,12 @@ namespace text_rpg
         }
         public void InDungeon(Monster monster)
         {
-
+            //전투 씬
+            //enum switch -> 스킬쓸지 공격할지 방어?회피? 선택지
         }
         public void DungeonClear(Monster monster)
         {
+            
             CreateMonsters.Clear();
         }
     }
