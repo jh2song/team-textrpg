@@ -106,7 +106,7 @@ namespace text_rpg.dungeon
             //checkVaild
             public void DungeonSelectView()
             {
-                Console.WriteLine("==================================================1");
+                Console.WriteLine("==================================================");
                 Console.WriteLine("  ┏   ┓             ◆ ;");
                 Console.WriteLine(" |      |          └┼┐ == ");
                 Console.WriteLine("|        |         ┌│  ==");
