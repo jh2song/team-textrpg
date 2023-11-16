@@ -8,12 +8,14 @@ namespace text_rpg.Characters
 {
     internal class Character
     {
+        Random rand = new Random();
         public string Name { get; set; }
         public int Level { get; set; }
         public int Attack { get; set; }
         public int Defence { get; set; }
         public int Hp { get; set; }
         public int Gold { get; set; }
+
         public bool IsDead = false;
         /// <summary>
         /// 크리티컬 확률
