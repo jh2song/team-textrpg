@@ -9,9 +9,13 @@ namespace text_rpg
         public List<Monster> CreateMonsters { get; set; }
         
 
-        public void StartDungeon(List<Monster> monster)
+        public void StartDungeon(List<Monster> monster, int stage)
         {
-            //몬스터 랜덤 생성 
+
+            int monsternum = 0;
+            if (stage == 1) { monsternum = 3; }            //난이도
+            else if (stage == 2) { monsternum = 6; }      
+
             CreateMonsters = new List<Monster>();
             Random rand = new Random();
             int MonsterNumber = rand.Next(2, 4);    // 2마리~4마리
@@ -19,7 +23,7 @@ namespace text_rpg
 
             for (int i = 0; i < MonsterNumber; i++)
             {
-                MonsterType = rand.Next(0, 2);   //몬스터 데이터 보고 조정   
+                MonsterType = rand.Next(monsternum, monsternum + 3);   //몬스터 데이터 보고 조정   
                 CreateMonsters.Add(monster[MonsterType]);
                 Console.WriteLine($"LV. {CreateMonsters[i].Level} {CreateMonsters[i].Name} HP : {CreateMonsters[i].Hp} ATK : {CreateMonsters[i].Attack}");
             }
