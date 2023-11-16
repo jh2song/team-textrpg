@@ -11,9 +11,8 @@ namespace TextRPGGame
     {
         public enum Name
         {
-            무기상점,
             장비상점,
-            물약상점
+            소모품상점
         }
         static public Name name = Name.장비상점;
 
@@ -21,8 +20,11 @@ namespace TextRPGGame
         static public Item[] equipSale; // 장비상점 판매목록
         static public Item[] consumSale; // 소모품상점 판매목록
 
-        static public Item[] catalog;
+        static Item[] catalog;
 
+
+
+        static Player player = new Player(); // 임시
         public static void Init() // 임시 - 사용금지
         {
             equipSale = new Item[6];
@@ -32,6 +34,9 @@ namespace TextRPGGame
             equipSale[1] = ItemData.items[1];
 
             // equipSale[0].count = 2;
+
+
+
         }
 
 
@@ -81,7 +86,7 @@ namespace TextRPGGame
                     BuyLoop();
                     break;
                 case 0:
-                   
+
                     break;
             }
 
@@ -90,7 +95,7 @@ namespace TextRPGGame
 
         static void BuyLoop() // 상점 구매 판매는 어차피 다 똑같으니까 우려먹어도될듯 델리게이트만들어서 함수도 다르게 실행시키자
         {
-            Console.Clear(); 
+            Console.Clear();
             Console.WriteLine("~~~~ 장비상점 ~~~~");
             Console.WriteLine();
             Console.WriteLine("대장장이 : 어디 원하는걸 골라보슈!");
@@ -258,14 +263,14 @@ namespace TextRPGGame
 
                             GameManager.character.gold += Data.itemData[i].price / 2;
 
-                        Console.Clear();
+                            Console.Clear();
                             Console.WriteLine("~~~~ 고물상 ~~~~");
                             Console.WriteLine();
                             Console.WriteLine("고물상 : 감사합니다잉~~~~");
                             SellScreen();
 
                             Console.WriteLine($"{Data.itemData[i].name}을 판매하였습니다");
-                                                        Console.WriteLine($"현재 소지금 : {GameManager.character.gold} ( +{Data.itemData[i].price / 2}원 )");
+                            Console.WriteLine($"현재 소지금 : {GameManager.character.gold} ( +{Data.itemData[i].price / 2}원 )");
                             Console.WriteLine();
 
                             Console.WriteLine("1. 더 판매하기");
@@ -325,7 +330,7 @@ namespace TextRPGGame
                     // 대사모음 넣어주기
                     break;
 
-                case Name.물약상점:
+                case Name.소모품상점:
                     catalog = consumSale;
                     // 대사모음 넣어주기
                     break;
@@ -335,32 +340,33 @@ namespace TextRPGGame
         }
 
 
-        static void SellScreen()
+        static void SellScreen() // 판매 화면
         {
-            Console.WriteLine();
-            Console.WriteLine("[        소지 아이템 목록           ]"); // 갖고있는 템만 나옴
+            Console.WriteLine("[        소지 아이템 목록           ]");
             Console.WriteLine();
 
-            for (int i = 0; i < player.Inven.Length; i++)
+            for (int i = 0; i < player.Equipment.Count; i++) // 장비 목록
             {
-                if (player.Inven[i].item != null)
-                    Console.WriteLine($"{i + 1}. 판매가 : {player.Inven[i].item.price / 2}원 | {player.Inven[i].item.name}");
+                if (player.Equipment[i] != null && true) // true에 착용중인 장비가 아니라면 넣기
+                {
+                    Console.WriteLine($"{i + 1}. 판매가 : {player.Equipment[i].ItemPrice / 2}원 | {player.Equipment[i].Name}");
+                }
             }
 
-
-            for (int i = 0; i < player.Inven.Length; i++)
+            for (int i = 0; i < player.Inven.Count; i++) // 소모품목록
             {
-                if (player.Inven[i].item != null)
-                    Console.WriteLine($"{i + 1}. 판매가 : {player.Inven[i].item.price / 2}원 | {player.Inven[i].item.name}");
+                if (player.Inven[i] != null)
+                    Console.WriteLine($"{i + 1}. 판매가 : {player.Inven[i].ItemPrice / 2}원 | {player.Inven[i].Name}");
             }
 
             Console.WriteLine("\n");
+            Console.WriteLine($"소지금 : {player.Gold} ");
+            Console.WriteLine();
 
         }
 
-        static void BuyScreen()
+        static void BuyScreen() // 구매화면
         {
-            Console.WriteLine();
             Console.WriteLine("[           판매목록           ]");
             Console.WriteLine();
 
@@ -373,6 +379,8 @@ namespace TextRPGGame
             }
 
             Console.WriteLine("\n");
+            Console.WriteLine($"소지금 : {player.Gold} ");
+            Console.WriteLine();
         }
 
 
