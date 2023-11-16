@@ -17,8 +17,7 @@ namespace text_rpg
             BattleController bc = new BattleController();
 
             bc.LoadMosters();
-            bc.showMonsters();
-            //bc.StartDungeon(2);
+            bc.StartDungeon(2);
 
 
 
