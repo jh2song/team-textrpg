@@ -12,10 +12,14 @@ namespace text_rpg.Utils
     internal class ItemData
     {
         public static Dictionary<int, Item> items;
-        public static string path = "ItemData.csv"; //파일경로
+        public static string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\CSV\\ItemData.csv"; //파일경로
+
+
 
         public static void Init() 
         {
+
+
             items = new Dictionary<int, Item>();
             items.Clear();
 

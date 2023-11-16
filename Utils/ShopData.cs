@@ -9,7 +9,8 @@ namespace text_rpg.Utils
 {
     internal class ShopData
     {
-        public static string path = "ShopDialogue.csv"; //파일경로
+        public static string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\CSV\\ShopDialogue.csv"; //파일경로
+
 
         public static string[] equipDialogue;
         public static string[] consumDialogue;
