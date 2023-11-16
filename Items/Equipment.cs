@@ -13,6 +13,7 @@ namespace text_rpg.Items
         public int AddAttack { get; set; } 
         public int AddDefence { get; set; }
         public int AddHp { get; set; }
+
         /// <summary>
         /// 크리티컬 확률을 올려주는 변수 (Crit - Critical)
         /// </summary>
