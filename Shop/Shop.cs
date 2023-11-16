@@ -32,7 +32,6 @@ namespace TextRPGGame
 
             equipSale[0] = ItemData.items[1];
             equipSale[1] = ItemData.items[1];
-
             // equipSale[0].count = 2;
 
 
@@ -98,8 +97,33 @@ namespace TextRPGGame
             Console.Clear();
             Console.WriteLine("~~~~ 장비상점 ~~~~");
             Console.WriteLine();
+<<<<<<< Updated upstream
             Console.WriteLine("대장장이 : 어디 원하는걸 골라보슈!");
             Screen();
+=======
+            Console.WriteLine($"{dialogue[1]} : {dialogue[3]}"); // 가게주인이름 : 물건 고를때 대사
+
+            BuyScreen();
+            // 물건 고르기, 나가기
+
+        }
+
+        static public void SellPage()
+        {
+            Console.Clear();
+            Console.WriteLine(dialogue[0]); // 가게명
+            Console.WriteLine();
+            Console.WriteLine($"{dialogue[1]} : {dialogue[2]}"); // 가게주인이름 : 인삿말
+
+            SellScreen();
+            // 물건 팔기, 나가기
+
+        }
+
+
+        static public void Buy()
+        {
+>>>>>>> Stashed changes
 
             Console.WriteLine("구매할 아이템의 숫자를 적고 엔터를 눌러주세요");
             Console.WriteLine("0. 나가기");
@@ -117,7 +141,13 @@ namespace TextRPGGame
                         break;
                     }
 
+<<<<<<< Updated upstream
                     if ((GameManager.character.inventory.slotCount >= GameManager.character.inventory.maxSlot))
+=======
+                    // 인벤토리 공간 제한 생기면 여기서 컷하기
+
+                    if (num < catalog.Length)
+>>>>>>> Stashed changes
                     {
                         Console.WriteLine("인벤토리공간이 부족합니다");
                         break;
@@ -131,9 +161,24 @@ namespace TextRPGGame
 
                             if (GameManager.character.Wallet(-itemCatalog[num].item.price))
                             {
+<<<<<<< Updated upstream
                                 GameManager.character.inventory.Add(itemCatalog[num].item);
 
                                 int i = itemCatalog[num].item.id;
+=======
+                                Console.Clear();
+                                Console.WriteLine(dialogue[0]);
+                                Console.WriteLine();
+                                Console.WriteLine($"{dialogue[1]} : {dialogue[2]}");
+                                BuyScreen();
+                                break;
+
+                            }
+                            else
+                            {
+                                
+                                player.Inven.Add(catalog[num]);
+>>>>>>> Stashed changes
 
                                 if (--itemCatalog[num].count <= 0)
                                     itemCatalog[num].item = null;
@@ -143,10 +188,10 @@ namespace TextRPGGame
                                 Console.WriteLine();
                                 Console.WriteLine("대장장이 : 감사합니다 손님!!!!");
 
-                                Screen();
+                                BuyScreen();
 
-                                Console.WriteLine($"※ {Data.itemData[i].name}이 인벤토리에 추가되었습니다.");
-                                Console.WriteLine($"현재 소지금 : {GameManager.character.gold} ( -{Data.itemData[i].price}원 )");
+                                Console.WriteLine($"※ {catalog[i].Name}이 인벤토리에 추가되었습니다.");
+                                Console.WriteLine($"현재 소지금 : {player.Gold} ( -{catalog[i].ItemPrice}원 )");
                                 Console.WriteLine();
 
                                 Console.WriteLine("1. 더 둘러보기");
@@ -205,6 +250,7 @@ namespace TextRPGGame
 
 
 
+<<<<<<< Updated upstream
         static public void Sell() // 내템 판매화면 실험용
         {
             Console.Clear();
@@ -340,6 +386,8 @@ namespace TextRPGGame
         }
 
 
+=======
+>>>>>>> Stashed changes
         static void SellScreen() // 판매 화면
         {
             Console.WriteLine("[        소지 아이템 목록           ]");
