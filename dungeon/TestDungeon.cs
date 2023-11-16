@@ -7,6 +7,13 @@ using text_rpg.Characters;
 
 namespace text_rpg.dungeon
 {
+    enum Select
+    {
+        exit = 0,
+        EnterDungeon,
+        UseItem = 2   
+
+    }
     internal class TestDungeon  //main controller
     {
         public Player player = new Player();
@@ -60,13 +67,60 @@ namespace text_rpg.dungeon
             private void dungeonEnter()
             {
                 //종욱님 그림
+                DungeonSelectView();
 
-                //checkVaild
-                //1. 던전 입장
-                //2. 소모품 사용
-                //0. 나가기
+                int firstView = (int)Select.EnterDungeon;
+                firstView = CheckValidInput(0, 2);
+                Select enumValue = (Select)firstView;
+                
+                switch (enumValue) { 
+                        case Select.EnterDungeon:
+                        // 던전입장
+                        break;
+
+                        case Select.UseItem:
+                        // 아이템사용
+                        break;
+
+                        case Select.exit:
+                        // 메인으로 나가기
+                        break;
+
+                }
             }
+            static int CheckValidInput(int min, int max)
+            {
+                while (true)
+                {
+                    string input = Console.ReadLine();
+
+                    bool parseSuccess = int.TryParse(input, out var ret);
+                    if (parseSuccess)
+                    {
+                        if (ret >= min && ret <= max)
+                            return ret;
+                    }
+
+                    Console.WriteLine("잘못된 입력입니다.");
+                }
+            }
+            //checkVaild
+            public void DungeonSelectView()
+            {
+                Console.WriteLine("==================================================");
+                Console.WriteLine("  ┏   ┓             ◆ ;");
+                Console.WriteLine(" |      |          └┼┐ == ");
+                Console.WriteLine("|        |         ┌│  ==");
+                Console.WriteLine("==================================================");
+                Console.WriteLine("======== 던전에 가기 전 준비를 해주세요. =========\n\n");
+                Console.WriteLine("==================");
+                Console.WriteLine("= 1. 던전 입장   =");
+                Console.WriteLine("= 2. 소모품 사용 =");
+                Console.WriteLine("= 0. 나가기      =");
+                Console.WriteLine("==================");
+            }   
         }
 
+        
     }
 }
