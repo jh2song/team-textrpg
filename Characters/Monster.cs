@@ -22,5 +22,11 @@ namespace text_rpg.Characters
             CritRate = int.Parse(myCritRate);
             MissRate = int.Parse(myMissRate);
         }
+
+        public void Dead()
+        {
+            //배틀 자체를 종료시켜야함 > 실패
+            //결과창 
+        }
     }
 }

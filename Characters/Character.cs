@@ -53,6 +53,7 @@ namespace text_rpg.Characters
             }
         }
 
+        //Dead는 임시 보류
         public void Dead()
         {
             // TODO
