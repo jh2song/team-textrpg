@@ -66,13 +66,13 @@ namespace TextRPGGame
             Console.WriteLine();
             Console.Write(">> ");
 
-            switch (GameManager.NextChoice(0, 1))
+            switch (CheckValidInput(0, 1))
             {
                 case 1:
-                    Sell_Use();
+                   
                     break;
                 case 0:
-                    GameManager.Map_Village();
+                   
                     break;
             }
 

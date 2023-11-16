@@ -1,10 +1,15 @@
-﻿namespace text_rpg
+﻿using text_rpg.Utils;
+
+namespace text_rpg
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+
+            ShopData.Init();
+            ItemData.Init();
+
         }
     }
 }

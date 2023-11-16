@@ -49,6 +49,10 @@ namespace text_rpg.Utils
 
                 }
             }
+            else
+            {
+                Console.WriteLine("파일을 찾을 수 없습니다.");
+            }
         }
     }
 }
