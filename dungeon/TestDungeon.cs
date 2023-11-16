@@ -11,8 +11,7 @@ namespace text_rpg.dungeon
     {
         exit = 0,
         EnterDungeon,
-        UseItem = 2   
-
+        UseItem = 2
     }
     internal class TestDungeon  //main controller
     {
@@ -107,7 +106,7 @@ namespace text_rpg.dungeon
             //checkVaild
             public void DungeonSelectView()
             {
-                Console.WriteLine("==================================================");
+                Console.WriteLine("==================================================1");
                 Console.WriteLine("  ┏   ┓             ◆ ;");
                 Console.WriteLine(" |      |          └┼┐ == ");
                 Console.WriteLine("|        |         ┌│  ==");
