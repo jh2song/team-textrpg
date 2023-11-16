@@ -57,11 +57,52 @@ namespace text_rpg.dungeon
         private void battleView()
         {
             //던전 입구 출력
+            /*do
+            {
+                switch (d_phase)
+                {
+                    case dungeonSelect:
+                        break;
+                    case UseItem:
+                        break;
+                    case battle:
+                            battle 내부
+                             while(Player.isDead!=true || CreateMonster.Length != 0) 
+                        break;
+                    case getOut;
+                        break;
+                }
+            }while
+            
+            battel 내부
+            뷰
+            for(int cnt = 0; cnt < CreateMonster.Length; cnt++)
+            {
+                if(CreateMonster[cnt].IsDead == true)
+                { 
+                    출력은 하는데  LV.3 공허충 Dead 로 나오도록
+                }
+            }
+
+            전투
+            for(int cnt = 0; cnt < CreateMonster.Length; cnt++)
+            {
+                if(CreateMonster[cnt].IsDead != true)
+                { 
+                    전투
+                }
+            }
+            
+            }
+             */
 
             //선택
 
             //던전 내
         }
+
+        //외부로 화면 출력코드를 빼기
+
 
         private void dungeonEnter()
         {
@@ -75,6 +116,7 @@ namespace text_rpg.dungeon
             switch (enumValue)
             {
                 case Select.EnterDungeon:
+                    //phase = d_phase.battle
                     // 던전입장
                     break;
 
@@ -148,12 +190,26 @@ namespace text_rpg.dungeon
             }
         }
 
+        
         public void showMonsters()
-        {
-            for(int cnt=0; cnt < monsterData.Count; cnt++)
+        {//load 테스트용 코드, 나중에 삭제 
+            for (int cnt=0; cnt < monsterData.Count; cnt++)
             {
                 Console.WriteLine($"{monsterData.ElementAt(cnt).Key}, {monsterData.ElementAt(cnt).Value.Name}");
             }
+        }
+
+        public void WinBoard()
+        {
+            //WIN!!
+            //> 얻은 골드, 경험치 표시
+        }
+
+        public void LoseBoard()
+        {
+            //Lose
+            //보상 획득 없이 던전 입구로 추방
+           //> "키 입력으로  던전 입구로 돌아가기"
         }
     }
 
