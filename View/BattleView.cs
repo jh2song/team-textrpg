@@ -1,9 +1,12 @@
 ﻿using System;
+using text_rpg.Characters;
 
 public class BattleView
 {
-	public void View(List <Monster> monsters)
+    /*
+
+	public static void View(List<Monster> monsters)
 	{
 
-	}
+	}*/
 }

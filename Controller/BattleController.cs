@@ -2,6 +2,9 @@
 
 public class BattleController
 {
+
+    /*
+
 	public List<Monster> Monster()
 	{
 
@@ -15,5 +18,5 @@ public class BattleController
 	void Battle()
 	{
 
-	}
+	}*/
 }

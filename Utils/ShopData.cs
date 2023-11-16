@@ -21,28 +21,7 @@ namespace text_rpg.Utils
             {
                 using (StreamReader sr = new StreamReader(new FileStream(path, FileMode.Open)))
                 {
-                    sr.ReadLine();
 
-                    while (!sr.EndOfStream)
-                    {
-                        string line = sr.ReadLine();
-                        string[] data = line.Split(',');
-
-
-
-                        for (int i = 0; i < data.Length; i++)
-                        {
-                            shopDialogue[i] = data[i];
-
-
-                        }
-                        
-                        item.Setting(data[0], data[1], data[2], data[3]); // Item클래스안에 들어있는 변수만 초기화 
-
-                        // 아이템이 장비냐 소모품이냐에 따라 추가 정보 기입
-
-                        shopDialogue.Add(item.Id, item);
-                    }
                 }
             }
         }
