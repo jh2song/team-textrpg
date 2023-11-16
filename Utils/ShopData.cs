@@ -32,17 +32,18 @@ namespace text_rpg.Utils
 
                         if (data[0] == "장비상점") // 상점 많아지면 스위치문으로 변경
                         {
+                            equipDialogue = new string[data.Length];
+
                             for (int i = 0; i < data.Length; i++)
                             {
-                                equipDialogue = new string[data.Length];
                                 equipDialogue[i] = data[i];
                             }
                         }
                         else
                         {
+                            consumDialogue = new string[data.Length];
                             for (int i = 0; i < data.Length; i++)
                             {
-                                consumDialogue = new string[data.Length];
                                 consumDialogue[i] = data[i];
                             }
                         }

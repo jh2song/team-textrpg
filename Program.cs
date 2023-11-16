@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using text_rpg.Utils;
+using TextRPGGame;
 
 namespace text_rpg
 {
@@ -7,9 +8,13 @@ namespace text_rpg
     {
         static void Main(string[] args)
         {
-          
-            ShopData.Init();
             ItemData.Init();
+            ShopData.Init();
+
+            Shop.Init();
+
+
+            Shop.Visit(Shop.Name.장비상점);
 
         }
     }

@@ -16,6 +16,7 @@ namespace text_rpg.Characters
         public int LevelUpExp { get; set; }
         public List<Skill> Skills { get; set; }
 
+
         public void ObtainItem(Item item)
         {
             // TODO

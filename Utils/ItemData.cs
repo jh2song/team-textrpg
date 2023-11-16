@@ -15,10 +15,8 @@ namespace text_rpg.Utils
         public static string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\CSV\\ItemData.csv"; //파일경로
 
 
-
         public static void Init() 
         {
-
 
             items = new Dictionary<int, Item>();
             items.Clear();
