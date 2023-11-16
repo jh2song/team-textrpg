@@ -17,6 +17,8 @@ namespace text_rpg.Characters
         public int Gold { get; set; }
 
         public bool IsDead = false;
+
+        public int Id { get; set; }
         /// <summary>
         /// 크리티컬 확률
         /// </summary>
