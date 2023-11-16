@@ -16,6 +16,16 @@ namespace text_rpg.Characters
         public int LevelUpExp { get; set; }
         public List<Skill> Skills { get; set; }
 
+        public Player(string name, int level, int attack, int defence, int hp, int gold, int critRate,int missRate) { 
+            Name = name;
+            Level = level;
+            Attack = attack;
+            Defence = defence;
+            Hp = hp;
+            Gold = gold;
+            CritRate = critRate;
+            MissRate = missRate;
+        }
         public void ObtainItem(Item item)
         {
             // TODO
@@ -24,6 +34,9 @@ namespace text_rpg.Characters
         public void RemoveItem(Item item)
         {
             // TODO
+        }
+        public void LevelUp() { 
+        
         }
     }
 }

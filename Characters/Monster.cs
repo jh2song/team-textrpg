@@ -10,7 +10,7 @@ namespace text_rpg.Characters
     {
         public int RewardExp { get; set; }
 
-        public Monster(string myId, string myName, string myLevel, string myAttack, string myDefence, string myHp, string myGold, string myCritRate, string myMissRate)
+        public Monster(string myId, string myName, string myLevel, string myAttack, string myDefence, string myHp, string myGold, string myCritRate, string myMissRate, string myExp)
         {
             Id = int.Parse(myId);
             Name = myName;
@@ -21,6 +21,7 @@ namespace text_rpg.Characters
             Gold = int.Parse(myGold);
             CritRate = int.Parse(myCritRate);
             MissRate = int.Parse(myMissRate);
+            RewardExp = int.Parse(myExp);
         }
 
         public void Dead()
