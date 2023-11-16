@@ -1,10 +1,16 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using text_rpg.Characters;
+using text_rpg.Items;
+using text_rpg.Utils;
 
 namespace text_rpg.dungeon
 {
@@ -18,9 +24,9 @@ namespace text_rpg.dungeon
 
     class BattleController
     {
-        Player player = new Player();
+        Player player = new Player("버스타조",1,10,5,100,1500,5,5);
         public List<Monster> CreateMonsters { get; set; }
-
+        
 
         public void StartDungeon(int stage)
         {
@@ -41,7 +47,7 @@ namespace text_rpg.dungeon
                 MonsterType = rand.Next(monsternum, monsternum + 3);   //몬스터 데이터 보고 조정   
                 Monster monsterinfo = monsterData.ElementAt(MonsterType).Value;
                 CreateMonsters.Add(monsterinfo);
-                Console.WriteLine($"LV.{monsterinfo.Level} \t {monsterinfo.Name} \t HP : {monsterinfo.Hp} \t ATK : {monsterinfo.Attack}");
+                Console.WriteLine($"LV.{monsterinfo.Level} \t {monsterinfo.Name} \t HP : {monsterinfo.Hp} \t ATK : {monsterinfo.Attack},");
             }
 
         }
@@ -118,12 +124,12 @@ namespace text_rpg.dungeon
             switch (enumValue)
             {
                 case Select.EnterDungeon:
-                    //phase = d_phase.battle
+                    // phase = d_phase.battle
                     // 던전입장
                     break;
 
                 case Select.UseItem:
-                    // 아이템사용
+                    
                     break;
 
                 case Select.exit:
@@ -132,6 +138,13 @@ namespace text_rpg.dungeon
 
             }
         }
+
+
+        void BattleMonster(int level) {
+
+        }
+    
+
         static int CheckValidInput(int min, int max)
         {
             while (true)
@@ -184,7 +197,7 @@ namespace text_rpg.dungeon
 
                         string[] data = line.Split(',');
 
-                        Monster monster = new Monster(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8]);
+                        Monster monster = new Monster(data[0], data[1], data[2], data[3], data[4], data[5], data[6], data[7], data[8], data[9]);
                         monsterData.Add(monster.Id, monster);
 
                     }
@@ -201,17 +214,19 @@ namespace text_rpg.dungeon
             }
         }
 
-        public void WinBoard()
+        public void WinBoard(List<Monster> monster, Player player)
         {
-            //WIN!!
-            //> 얻은 골드, 경험치 표시
+            int rewardGold;
+            int rewardExp;
+            rewardGold = monster[0].Gold + monster[1].Gold + monster[2].Gold;
+            rewardExp = monster[0].RewardExp + monster[1].RewardExp + monster[2].RewardExp;
+            player.Gold += rewardGold;
+            player.LevelUpExp += rewardExp;
         }
 
         public void LoseBoard()
         {
-            //Lose
-            //보상 획득 없이 던전 입구로 추방
-           //> "키 입력으로  던전 입구로 돌아가기"
+            Console.WriteLine("키 입력으로  던전 입구로 돌아가기");
         }
 
     }
