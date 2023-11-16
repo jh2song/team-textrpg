@@ -12,14 +12,16 @@ namespace text_rpg
     {
         static void Main(string[] args)
         {
-            //Console.WriteLine("Hello, World!");
+            Console.WriteLine("Hello, World!");
 
-            //BattleController bc = new BattleController();
+            BattleController bc = new BattleController();
 
-            //bc.LoadMosters();
-            //bc.showMonsters();
+            bc.LoadMosters();
+            bc.showMonsters();
+            //bc.StartDungeon(2);
 
-            
+
+
         }
     }
 }

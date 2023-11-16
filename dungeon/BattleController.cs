@@ -22,12 +22,12 @@ namespace text_rpg.dungeon
         public List<Monster> CreateMonsters { get; set; }
 
 
-        public void StartDungeon(List<Monster> monster, int stage)
+        public void StartDungeon(int stage)
         {
 
-            int monsternum = 0;
-            if (stage == 1) { monsternum = 3; }            //난이도
-            else if (stage == 2) { monsternum = 6; }
+            int monsternum = 100;
+            if (stage == 1) { monsternum = 200; }            //난이도
+            else if (stage == 2) { monsternum = 300; }
 
             CreateMonsters = new List<Monster>();
 
@@ -37,9 +37,11 @@ namespace text_rpg.dungeon
 
             for (int i = 0; i < MonsterNumber; i++)
             {
+                
                 MonsterType = rand.Next(monsternum, monsternum + 3);   //몬스터 데이터 보고 조정   
-                CreateMonsters.Add(monster[MonsterType]);
-                Console.WriteLine($"LV. {CreateMonsters[i].Level} {CreateMonsters[i].Name} HP : {CreateMonsters[i].Hp} ATK : {CreateMonsters[i].Attack}");
+                var monsterinfo = monsterData.ElementAt(MonsterType).Value;
+                CreateMonsters.Add(monsterinfo);
+                Console.WriteLine($"LV.{monsterinfo.Name} {monsterinfo.Name} HP : {monsterinfo.Hp} ATK : {monsterinfo.Attack}");
             }
 
         }
