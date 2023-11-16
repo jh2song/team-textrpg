@@ -19,5 +19,13 @@ namespace text_rpg.Utils
             Buff,
             DeBuff,
         }
+
+        public enum GameStages
+        {
+            Intro,
+            Login,
+            Base,
+            Stat
+        }
     }
 }
