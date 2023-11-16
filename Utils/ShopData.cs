@@ -32,7 +32,7 @@ namespace text_rpg.Utils
 
                         for (int i = 0; i < data.Length; i++)
                         {
-                            shopDialogue[i] = 
+                            shopDialogue[i] = data[i];
 
 
                         }
