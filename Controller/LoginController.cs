@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using text_rpg.Characters;
 
 namespace text_rpg.Controller
 {
     internal class LoginController
     {
+        Player player = MainController.getInst().player;
+
         private string _id;
         private string _password;
 
@@ -25,7 +28,6 @@ namespace text_rpg.Controller
         public void Login()
         {
 
-            MainController.getInst().CurrentStage = 
         }
     }
 }
