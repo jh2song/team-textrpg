@@ -8,16 +8,18 @@ namespace text_rpg.Utils
 {
     internal class Define
     {
-        public enum Parts
+        public enum ItemType
         {
-            LeftHand,
-            RightHand,
+            Consum,
+            Equip
         }
 
-        public enum SkillTypes
+        public enum Parts
         {
-            Buff,
-            DeBuff,
+            Weapon,
+            Head,
+            Body,
+            Shoes
         }
     }
 }

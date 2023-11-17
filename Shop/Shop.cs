@@ -21,7 +21,7 @@ namespace TextRPGGame
         static Item[] catalog;
         static string[] dialogue;
 
-        static public Player player= new Player(); // 임시
+        static public Player player = new Player(); // 임시
         public static void Init() // 상점에 아이템추가 재고 추가기능 넣으려면 수정해야함
         {
             equipSale = new Item[6];
@@ -73,6 +73,7 @@ namespace TextRPGGame
             Console.WriteLine("0.나가기");
             Console.WriteLine();
             Console.Write(">> ");
+           
 
             switch (CheckValidInput(0, 2))
             {
@@ -109,7 +110,6 @@ namespace TextRPGGame
             Console.WriteLine();
             Console.Write(">> ");
 
-
             while (true)
             {
                 if (int.TryParse(Console.ReadLine(), out int num))
@@ -120,21 +120,6 @@ namespace TextRPGGame
                         break;
                     }
 
-                    switch (name)
-                    {
-                        case Name.장비상점:
-                            if (player.equipment.Count >= player.equipMaxCount)
-                                Console.WriteLine("인벤토리공간이 부족합니다");
-                            break;
-
-                        case Name.소모품상점:
-                            if (player.inven.Count >= player.invenMaxCount)
-                                Console.WriteLine("인벤토리공간이 부족합니다");
-                            break;
-                    }
-
-
-
                     if (num < catalog.Length)
                     {
                         if (catalog[num] != null)
@@ -142,18 +127,7 @@ namespace TextRPGGame
                             if ((player.Gold - catalog[num].ItemPrice) >= 0) // 돈이 안모자를때
                             {
                                 player.Gold -= catalog[num].ItemPrice;
-
-
-                                switch (name)
-                                {
-                                    case Name.장비상점:
-                                        player.Equipment.Add(catalog[num]);
-                                        break;
-
-                                    case Name.소모품상점:
-                                        player.Inven.Add(catalog[num]);
-                                        break;
-                                }
+                                player.inven.Add(catalog[num]);
 
                                 int i = catalog[num].Id;
 
@@ -245,9 +219,6 @@ namespace TextRPGGame
         }
 
     
- 
-
-
 
     static void BuyScreen() // 구매화면
         {

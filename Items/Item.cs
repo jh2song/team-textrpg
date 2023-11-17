@@ -5,11 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using text_rpg.Utils;
 
 namespace text_rpg.Items
 {
     internal class Item
     {
+        public Define.ItemType Type { get; set; }
+
         public int Id { get; set; }
         public string Name { get; set; }
         public string Info { get; set; }

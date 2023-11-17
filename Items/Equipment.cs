@@ -19,5 +19,9 @@ namespace text_rpg.Items
         /// </summary>
         public float AddCritRate { get; set; }
         public float AddMissRate { get; set; }
+
+
+
+
     }
 }
