@@ -9,6 +9,8 @@ namespace text_rpg.Characters
     internal class Character
     {
         Random rand = new Random();
+
+        public int Id { get; set; }
         public string Name { get; set; }
         public int Level { get; set; }
         public int Attack { get; set; }
@@ -16,14 +18,15 @@ namespace text_rpg.Characters
         public int Hp { get; set; }
         public int Gold { get; set; }
 
-        public bool IsDead = false;
-
-        public int Id { get; set; }
         /// <summary>
         /// 크리티컬 확률
         /// </summary>
         public int CritRate { get; set; }
         public int MissRate { get; set; }
+
+        public bool IsDead = false;
+
+        
 
         public void TakeDamage(Character enemy) // 매개변수 임의로 작성
         {
