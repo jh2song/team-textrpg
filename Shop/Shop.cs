@@ -13,6 +13,7 @@ namespace TextRPGGame
             장비상점,
             소모품상점
         }
+        static public Name name;
 
         static public Item[] equipSale; // 장비상점 판매목록
         static public Item[] consumSale; // 소모품상점 판매목록
@@ -20,8 +21,7 @@ namespace TextRPGGame
         static Item[] catalog;
         static string[] dialogue;
 
-
-        static public Player player = new Player(); // 임시
+        static public Player player= new Player(); // 임시
         public static void Init() // 상점에 아이템추가 재고 추가기능 넣으려면 수정해야함
         {
             equipSale = new Item[6];
@@ -40,13 +40,16 @@ namespace TextRPGGame
         }
 
 
-        static public void Visit(Name name)
+        static public void Visit(Name nam)
         {
+            name = nam;
+
             switch (name)
             {
                 case Name.장비상점:
                     catalog = equipSale;
                     dialogue = ShopData.equipDialogue;
+
                     break;
                 case Name.소모품상점:
                     catalog = consumSale;
@@ -74,10 +77,10 @@ namespace TextRPGGame
             switch (CheckValidInput(0, 2))
             {
                 case 1:
-                    LookAround();
+                    TakeMyMoney();
                     break;
                 case 2:
-                    LookMyItem();
+                    GiveMeMoney();
                     break;
                 case 0:
                     // 상점 나가기
@@ -86,8 +89,13 @@ namespace TextRPGGame
 
         }
 
-        static void LookAround() // 템고르기
+        static void GiveMeMoney()
+        { 
+        }
+
+        static void TakeMyMoney() // 템고르기
         {
+
             Console.Clear();
             Console.WriteLine(dialogue[0]);
             Console.WriteLine();
@@ -96,18 +104,138 @@ namespace TextRPGGame
 
             BuyScreen();
 
-            Console.WriteLine();
-            Console.WriteLine("물건고르기"); // -------------- 상점템 번호
-
-            Console.WriteLine("0.나가기");
+            Console.WriteLine("구매할 아이템의 숫자를 적고 엔터를 눌러주세요");
+            Console.WriteLine("0. 나가기");
             Console.WriteLine();
             Console.Write(">> ");
+
+
+            while (true)
+            {
+                if (int.TryParse(Console.ReadLine(), out int num))
+                {
+                    if (--num < 0)
+                    {
+                        Open();
+                        break;
+                    }
+
+                    switch (name)
+                    {
+                        case Name.장비상점:
+                            if (player.equipment.Count >= player.equipMaxCount)
+                                Console.WriteLine("인벤토리공간이 부족합니다");
+                            break;
+
+                        case Name.소모품상점:
+                            if (player.inven.Count >= player.invenMaxCount)
+                                Console.WriteLine("인벤토리공간이 부족합니다");
+                            break;
+                    }
+
+
+
+                    if (num < catalog.Length)
+                    {
+                        if (catalog[num] != null)
+                        {
+                            if ((player.Gold - catalog[num].ItemPrice) >= 0) // 돈이 안모자를때
+                            {
+                                player.Gold -= catalog[num].ItemPrice;
+
+
+                                switch (name)
+                                {
+                                    case Name.장비상점:
+                                        player.Equipment.Add(catalog[num]);
+                                        break;
+
+                                    case Name.소모품상점:
+                                        player.Inven.Add(catalog[num]);
+                                        break;
+                                }
+
+                                int i = catalog[num].Id;
+
+                                //    if (--catalog[num] <= 0) catalog[num] = null; 물건 판매갯수 설정되면 추가
+
+                                Console.Clear();
+                                Console.WriteLine(dialogue[0]);
+                                Console.WriteLine();
+                                Console.WriteLine($"{dialogue[1]} : {dialogue[3]}");
+
+                                BuyScreen();
+
+                                Console.WriteLine($"※ {ItemData.items[i].Name}이 인벤토리에 추가되었습니다.");
+                                Console.WriteLine($"현재 소지금 : {player.Gold} ( -{ItemData.items[i].ItemPrice}원 )");
+                                Console.WriteLine();
+
+                                Console.WriteLine("1. 더 둘러보기");
+                                Console.WriteLine("0. 나가기");
+                                Console.WriteLine();
+                                Console.Write(">> ");
+
+                                switch (CheckValidInput(0, 1))
+                                {
+                                    case 1:
+                                        TakeMyMoney();
+                                        break;
+                                    case 0:
+                                        Open();
+                                        break;
+                                }
+                            }
+                            else // 소지금 부족할때
+                            {
+                                Console.Clear();
+                                Console.WriteLine(dialogue[0]);
+                                Console.WriteLine();
+                                Console.WriteLine($"{dialogue[1]} : {dialogue[3]}");
+                                BuyScreen();
+
+                                Console.WriteLine("0. 나가기");
+                                Console.WriteLine();
+                                Console.Write(">> ");
+
+                                switch (CheckValidInput(0, 0))
+                                {
+                                    case 0:
+                                        Open();
+                                        break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("아이템이 존재하지 않습니다.");
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("잘못된 입력입니다.");
+                        continue;
+                    }
+                }
+
+            }
+
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+            Console.Write(">> ");
+
+            switch (CheckValidInput(0, 0))
+            {
+                case 0:
+                    Open();
+                    break;
+            }
 
 
             switch (CheckValidInput(0, 1))
             {
                 case 1:
-                    //LookAround();
+                  //  LookMyItem();
                     break;
                 case 0:
                     Open();
@@ -116,22 +244,12 @@ namespace TextRPGGame
 
         }
 
-        static void LookMyItem()
-        {
-            Console.Clear();
-            Console.WriteLine(dialogue[0]);
-            Console.WriteLine();
-            Console.WriteLine($"{dialogue[1]} : {dialogue[3]}");
-            Console.WriteLine();
-
-            SellScreen();
-
-
-        }
+    
+ 
 
 
 
-        static void BuyScreen() // 구매화면
+    static void BuyScreen() // 구매화면
         {
             Console.WriteLine("[           판매목록           ]");
             Console.WriteLine();

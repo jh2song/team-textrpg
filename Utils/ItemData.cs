@@ -34,9 +34,9 @@ namespace text_rpg.Utils
 
                         Item item = new Item();
 
-                        item.Setting(data[0], data[1], data[2], data[3]); // Item클래스안에 들어있는 변수만 초기화 
+                        item.Setting(data[0], data[2], data[3], data[4]); // Item클래스안에 들어있는 변수만 초기화 
 
-                        // 아이템이 컨슘인지 이큅인지 구분하고 추가 정보 기입
+                        // 아이템이 컨슘인지 이큅인지 구분하고 추가 정보 기입  data[1]이 장비일때, 소모품일때
 
                         items.Add(item.Id, item);
                     }
