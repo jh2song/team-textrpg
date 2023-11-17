@@ -53,11 +53,18 @@ public class InvenView
 
         for (int i = 0; i < player.inven.Count; i++)
         {
+            //string input = "종류 : ";
+            //string input = "세트명 : ";
+            //string input = "장비부위 : ";
+            //string input = "능력치 : ";
+            //string input = "설명 : ";
+            //string input = "착용직업 : ";
+            //string input = "가격 : ";
 
+            // 변수이름 전부 수정해야함
+
+            string output = InsertLineBreakEveryTwentyCharacters(input);
+            Console.WriteLine(output);
         }
-
-        string input = $"{item.myName}"
-        string output = InsertLineBreakEveryTwentyCharacters(input); // 20글자마다 줄바꿈
-        Console.WriteLine(output);
     }
 }
