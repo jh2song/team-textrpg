@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace text_rpg.Items
 {
@@ -12,5 +14,18 @@ namespace text_rpg.Items
         public string Name { get; set; }
         public string Info { get; set; }
         public int ItemPrice { get; set; }
+
+
+        public void Setting(string myId, string myName, string myComment, string myPrice)
+        {
+            Id = int.Parse(myId);
+
+            Name = myName;
+            Info = myComment;
+
+            ItemPrice = int.Parse(myPrice);
+        }
+
+
     }
 }
