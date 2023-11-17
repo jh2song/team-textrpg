@@ -13,10 +13,5 @@ namespace text_rpg.Items
         public int BuffAttack { get; set; }
         public int BuffDefence { get; set; }
         public int Stock { get; set; }
-
-        public void Used(Player player)
-        {
-            // TODO
-        }
     }
 }
