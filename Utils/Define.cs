@@ -29,5 +29,16 @@ namespace text_rpg.Utils
             Base,
             Stat
         }
+
+        public enum Buff
+        {
+            atk,
+            def,
+            hp,
+            cri,
+            miss
+        }
+
+
     }
 }

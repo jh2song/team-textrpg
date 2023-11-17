@@ -56,7 +56,7 @@ public class InvenView
 
         }
 
-        string input = $"{item.myName}"
+        string input = $"{item.myName}";
         string output = InsertLineBreakEveryTwentyCharacters(input); // 20글자마다 줄바꿈
         Console.WriteLine(output);
     }

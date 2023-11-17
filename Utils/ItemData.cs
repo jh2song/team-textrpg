@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using text_rpg.Items;
 using System;
 using System.IO;
+using System.ComponentModel.Design;
 
 namespace text_rpg.Utils
 {
@@ -34,30 +35,20 @@ namespace text_rpg.Utils
 
                         if (data[1] == "장비")
                         {
-                            ConsumableItem item = new ConsumableItem();
+                            Equipment item = new Equipment();
                             item.Setting(data[0], data[2], data[3], data[4]); // Item클래스안에 들어있는 변수만 초기화 
                             item.Type = Define.ItemType.Equip;
 
+                            if (data[5].ToString() == "Weapon")
+                                item.Part = Define.Parts.Weapon;
+                            else if (data[5].ToString() == "Head")
+                                item.Part = Define.Parts.Head;
+                            else if (data[5].ToString() == "Body")
+                                item.Part = Define.Parts.Body;
+                            else if (data[5].ToString() == "Shoes")
+                                item.Part = Define.Parts.Shoes;
+
                             items.Add(item.Id, item);
-
-                            switch (Define.Parts)
-                            {
-                                case Define.Parts.Weapon:
-                                    item.Type data[5];
-                                    break;
-                                case Define.Parts.Head:
-
-                                    break;
-                                case Define.Parts.Body:
-
-                                    break;
-                                case Define.Parts.Shoes:
-                                    break;
-                                default:
-                                    break;
-                            }
-
-
                         }
                         else
                         {
@@ -66,10 +57,6 @@ namespace text_rpg.Utils
                             item.Type = Define.ItemType.Consum;
                             items.Add(item.Id, item);
                         }
-
-                        // 아이템이 컨슘인지 이큅인지 구분하고 추가 정보 기입  data[1]이 장비일때, 소모품일때
-
-                       
                     }
                 }
             }
