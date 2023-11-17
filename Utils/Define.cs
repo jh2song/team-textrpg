@@ -21,5 +21,13 @@ namespace text_rpg.Utils
             Body,
             Shoes
         }
+
+        public enum GameStages
+        {
+            Intro,
+            Login,
+            Base,
+            Stat
+        }
     }
 }
