@@ -3,6 +3,7 @@ using System.Numerics;
 using text_rpg.Characters;
 using text_rpg.Items;
 using text_rpg.Utils;
+using static TextRPGGame.Shop;
 
 namespace TextRPGGame
 {
@@ -18,13 +19,11 @@ namespace TextRPGGame
         static public Item[] equipSale; // 장비상점 판매목록
         static public Item[] consumSale; // 소모품상점 판매목록
 
+        static string shopName;
         static Item[] catalog;
-        static string[] dialogue;
-
 
         static bool isBuy = false;
         static bool isSell = false;
-
 
         static public Player player = new Player(); // 임시
         public static void Init() // 상점에 아이템추가 재고 추가기능 넣으려면 수정해야함
@@ -51,24 +50,28 @@ namespace TextRPGGame
             {
                 case Name.장비상점:
                     catalog = equipSale;
-                    dialogue = ShopData.equipDialogue;
-
                     break;
                 case Name.소모품상점:
                     catalog = consumSale;
-                    dialogue = ShopData.consumDialogue;
+                   
                     break;
             }
+            shopName = nam.ToString();
 
             Open();
         }
 
+
+        //     {{ "주인이름", data[1] }, { "방문인사", data[2] }, { "물건볼때", data[3]}, { "구매했을때", data[4] },{ "안살때", data[5] },{ "작별인사", data[6]}};
+
         static void Open()
         {
             Console.Clear();
-            Console.WriteLine(dialogue[0]);
+            Console.WriteLine($"-------------{shopName}-------------");
             Console.WriteLine();
-            Console.WriteLine($"{dialogue[1]} : {dialogue[2]}");
+            Console.WriteLine($"{ShopData.shopDialogue[shopName]["주인이름"]} : {ShopData.shopDialogue[shopName]["방문인사"]}");
+            
+            BuyScreen();
 
             Console.WriteLine();
             Console.WriteLine("1.구매하기");
@@ -97,6 +100,14 @@ namespace TextRPGGame
         {
             isBuy = false;
             isSell = true;
+
+            SellScreen();
+
+            Console.WriteLine("판매할 아이템의 숫자를 적고 엔터를 눌러주세요");
+            Console.WriteLine("0. 나가기");
+            Console.WriteLine();
+            Console.Write(">> ");
+
         }
 
         static void TakeMyMoney() // 템구매하기
@@ -105,10 +116,9 @@ namespace TextRPGGame
             isSell = false;
 
             Console.Clear();
-            Console.WriteLine(dialogue[0]);
+            Console.WriteLine($"-------------{shopName}-------------");
             Console.WriteLine();
-            Console.WriteLine($"{dialogue[1]} : {dialogue[3]}");
-            Console.WriteLine();
+            Console.WriteLine($"{ShopData.shopDialogue[shopName]["주인이름"]} : {ShopData.shopDialogue[shopName]["방문인사"]}");
 
             BuyScreen();
 
@@ -196,13 +206,13 @@ namespace TextRPGGame
                 }
 
             }
-
         }
-
 
 
         static void BuyScreen() // 구매화면
         {
+            Console.WriteLine();
+
             Console.WriteLine("[           판매목록           ]");
             Console.WriteLine();
 
@@ -211,7 +221,7 @@ namespace TextRPGGame
                 if (catalog[i] != null)
                     Console.WriteLine((isBuy ? $"{i + 1}." : "") + ($"{catalog[i].Name} | {catalog[i].Info} | {catalog[i].ItemPrice}원 "));
                 else
-                    Console.WriteLine($"{i + 1}. -----------------------  품절  -----------------------");
+                    Console.WriteLine((isBuy ? $"{i + 1}." : "") + "-----------------------  품절  -----------------------");
             }
 
             Console.WriteLine();
@@ -222,6 +232,8 @@ namespace TextRPGGame
 
         static void SellScreen() // 판매 화면
         {
+            Console.WriteLine();
+
             Console.WriteLine("[        소지 아이템 목록           ]");
             Console.WriteLine();
 
@@ -241,7 +253,6 @@ namespace TextRPGGame
                     Console.WriteLine((isSell ? $"{i + 1}." : "") + $"판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
                 }
             }
-
 
             Console.WriteLine();
             Console.WriteLine($"소지금 : {player.Gold} ");

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using text_rpg.Items;
+using TextRPGGame;
+using static TextRPGGame.Shop;
 
 namespace text_rpg.Utils
 {
@@ -12,11 +14,14 @@ namespace text_rpg.Utils
         public static string path = Directory.GetParent(Environment.CurrentDirectory).Parent.Parent + "\\CSV\\ShopDialogue.csv"; //파일경로
 
 
-        public static string[] equipDialogue;
-        public static string[] consumDialogue;
+
+        public static Dictionary<string, Dictionary<string, string>> shopDialogue;
 
         public static void Init()
         {
+
+            shopDialogue = new Dictionary<string, Dictionary<string, string>>(); // 상점이름 / 언제대사인지 / 대사
+
 
             if (File.Exists(path))
             {
@@ -30,27 +35,24 @@ namespace text_rpg.Utils
                         string[] data = line.Split(',');
 
 
-                        if (data[0] == "장비상점") // 상점 많아지면 스위치문으로 변경
-                        {
-                            equipDialogue = new string[data.Length];
+                        Dictionary<string, string> dic = new Dictionary<string, string>
+                               {{ "주인이름", data[1] }, { "방문인사", data[2] }, { "물건볼때", data[3]}, { "구매했을때", data[4] },{ "안살때", data[5] },{ "작별인사", data[6]}};
 
-                            for (int i = 0; i < data.Length; i++)
-                            {
-                                equipDialogue[i] = data[i];
-                            }
-                        }
-                        else
+                        switch (data[0])
                         {
-                            consumDialogue = new string[data.Length];
-
-                            for (int i = 0; i < data.Length; i++)
-                            {
-                                consumDialogue[i] = data[i];
-                            }
+                            case "장비":
+                                shopDialogue.Add(Shop.Name.장비상점.ToString(), dic);
+                                break;
+                            case "소모품":
+                                shopDialogue.Add(Shop.Name.소모품상점.ToString(), dic);
+                                break;
                         }
+
+                        
+
                     }
-
                 }
+
             }
             else
             {
@@ -59,3 +61,4 @@ namespace text_rpg.Utils
         }
     }
 }
+
