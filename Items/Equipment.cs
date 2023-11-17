@@ -21,7 +21,15 @@ namespace text_rpg.Items
         public float AddMissRate { get; set; }
 
 
+        // 올려지는능력	
+        public Define.Buff buffName;
+        // 올려지는수치	
+        public int point; // 올라가는값
 
+        // 세트명
+        public Define.SetEquip set;
+
+        // 착용직업	
 
     }
 }

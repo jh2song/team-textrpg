@@ -34,11 +34,21 @@ namespace text_rpg.Utils
         {
             atk,
             def,
-            hp,
             cri,
-            miss
+            miss,
+            hp
         }
 
+        public enum SetEquip
+        {
+            세트효과없음,
+            종이세트,
+            나무세트,
+            철세트,
+            아다만세트
+        }
+
+        // enum 자리로 불러오느는법
 
     }
 }

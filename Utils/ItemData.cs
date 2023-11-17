@@ -7,6 +7,8 @@ using text_rpg.Items;
 using System;
 using System.IO;
 using System.ComponentModel.Design;
+using System.Drawing;
+using static text_rpg.Utils.Define;
 
 namespace text_rpg.Utils
 {
@@ -38,23 +40,21 @@ namespace text_rpg.Utils
                             Equipment item = new Equipment();
                             item.Setting(data[0], data[2], data[3], data[4]); // Item클래스안에 들어있는 변수만 초기화 
                             item.Type = Define.ItemType.Equip;
+                            item.Part = (Define.Parts)(int.Parse(data[5]));
+                            item.buffName = (Define.Buff)(int.Parse(data[6]));
+                            item.point = int.Parse(data[7]);
 
-                            if (data[5].ToString() == "Weapon")
-                                item.Part = Define.Parts.Weapon;
-                            else if (data[5].ToString() == "Head")
-                                item.Part = Define.Parts.Head;
-                            else if (data[5].ToString() == "Body")
-                                item.Part = Define.Parts.Body;
-                            else if (data[5].ToString() == "Shoes")
-                                item.Part = Define.Parts.Shoes;
+                            item.set = (Define.SetEquip)int.Parse(data[8]);
 
                             items.Add(item.Id, item);
                         }
                         else
                         {
-                            Equipment item = new Equipment();
+                            ConsumableItem item = new ConsumableItem();
                             item.Setting(data[0], data[2], data[3], data[4]); // Item클래스안에 들어있는 변수만 초기화 
                             item.Type = Define.ItemType.Consum;
+                            item.point = int.Parse(data[7]);
+
                             items.Add(item.Id, item);
                         }
                     }

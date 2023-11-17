@@ -18,5 +18,9 @@ namespace text_rpg.Items
         {
             // TODO
         }
+
+
+        public int point; // 회복수치
+
     }
 }
