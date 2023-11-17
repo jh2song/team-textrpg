@@ -222,6 +222,7 @@ namespace text_rpg.dungeon
             rewardExp = monster[0].RewardExp + monster[1].RewardExp + monster[2].RewardExp;
             player.Gold += rewardGold;
             player.LevelUpExp += rewardExp;
+            // stage++;
         }
 
         public void LoseBoard()
