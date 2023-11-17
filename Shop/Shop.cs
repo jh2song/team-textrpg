@@ -21,6 +21,11 @@ namespace TextRPGGame
         static Item[] catalog;
         static string[] dialogue;
 
+
+        static bool isBuy = false;
+        static bool isSell = false;
+
+
         static public Player player = new Player(); // 임시
         public static void Init() // 상점에 아이템추가 재고 추가기능 넣으려면 수정해야함
         {
@@ -90,10 +95,14 @@ namespace TextRPGGame
 
         static void GiveMeMoney()
         {
+            isBuy = false;
+            isSell = true;
         }
 
         static void TakeMyMoney() // 템구매하기
         {
+            isBuy = true;
+            isSell = false;
 
             Console.Clear();
             Console.WriteLine(dialogue[0]);
@@ -172,7 +181,7 @@ namespace TextRPGGame
                             }
 
                         }
-                     
+
                     }
                     else
                     {
@@ -200,7 +209,7 @@ namespace TextRPGGame
             for (int i = 0; i < catalog.Length; i++)
             {
                 if (catalog[i] != null)
-                    Console.WriteLine($"{i + 1}. {catalog[i].Name} | {catalog[i].Info} | {catalog[i].ItemPrice}원 ");
+                    Console.WriteLine((isBuy ? $"{i + 1}." : "") + ($"{catalog[i].Name} | {catalog[i].Info} | {catalog[i].ItemPrice}원 "));
                 else
                     Console.WriteLine($"{i + 1}. -----------------------  품절  -----------------------");
             }
@@ -221,7 +230,7 @@ namespace TextRPGGame
             {
                 if (player.inven[i] != null && player.inven[i].Type == Define.ItemType.Equip && !player.inven[i].IsEquipped)
                 {
-                    Console.WriteLine($"{i + 1}. 판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
+                    Console.WriteLine((isSell ? $"{i + 1}." : "") + ($"판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}"));
                 }
             }
 
@@ -229,7 +238,7 @@ namespace TextRPGGame
             {
                 if (player.inven[i] != null && player.inven[i].Type == Define.ItemType.Consum)
                 {
-                    Console.WriteLine($"{i + 1}. 판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
+                    Console.WriteLine((isSell ? $"{i + 1}." : "") + $"판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
                 }
             }
 
