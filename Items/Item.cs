@@ -18,6 +18,8 @@ namespace text_rpg.Items
         public string Info { get; set; }
         public int ItemPrice { get; set; }
 
+        public bool IsEquipped { get; set; } = false
+
 
         public void Setting(string myId, string myName, string myComment, string myPrice)
         {
