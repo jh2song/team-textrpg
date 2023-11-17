@@ -10,11 +10,12 @@ namespace text_rpg.Characters
 {
     internal class Player : Character
     {
-        public List<ConsumableItem> Inven { get; set; }
-        public List<Equipment> Equipment { get; set; }
+        public List<Item> inven = new();
+ 
         public string Class { get; set; }
         public int LevelUpExp { get; set; }
         public List<Skill> Skills { get; set; }
+
 
         public void ObtainItem(Item item)
         {
