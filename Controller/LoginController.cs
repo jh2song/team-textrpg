@@ -22,11 +22,9 @@ namespace text_rpg.Controller
 
         public string path = "PlayerData.csv";
         
-        public bool Load()
+        public void Load()
         {
-            // 아이디 하나 -> 캐릭터 하나 
-            // 아이디 여러개 ? -> 캐릭터 여러개
-            
+           
             PlayerData = new Player();
 
             if (File.Exists(path))
@@ -39,7 +37,6 @@ namespace text_rpg.Controller
                     sr.Close();
                 }
             }
-            return false;
         }
 
         public void Save()
@@ -48,7 +45,6 @@ namespace text_rpg.Controller
             writer.Write(PlayerData.Name+","+PlayerData.Class+","+ PlayerData.Level + "," + PlayerData.Attack + "," + PlayerData.Defence + "," + PlayerData.Hp + "," + PlayerData.Gold + "," +
                 PlayerData.CritRate + "," + PlayerData.MissRate);
             writer.Close();
-
         }
 
         public void Login()
@@ -58,7 +54,6 @@ namespace text_rpg.Controller
             String _InputId = Console.ReadLine();
             if (_id != null && _InputId == _id)
             {
-                _InputId = _id;
                 Console.WriteLine("비밀번호(PassWord)를 입력해 주세요");
                 String _InputpassWord = Console.ReadLine();
                 if (_InputpassWord != null && _password == _InputpassWord)

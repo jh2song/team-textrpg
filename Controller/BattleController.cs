@@ -12,7 +12,7 @@ namespace text_rpg.Controller
     {
 
         private BattleView _battleView = new BattleView();
-        
+
         //Player player = new Player("버스타조",1,10,5,100,1500,5,5);
         public List<Monster> CreateMonsters { get; set; }
 
@@ -63,7 +63,7 @@ namespace text_rpg.Controller
             switch (enumValue)
             {
                 case Select.EnterDungeon:
-                    // phase = d_phase.battle
+                    battleView();
                     // 던전입장
                     break;
 
@@ -106,59 +106,25 @@ namespace text_rpg.Controller
         }
 
         private void battleView()
+
         {
-            //던전 입구 출력
-            /*do
+            int input = CheckValidInput(1, 3);
+            switch (input)
             {
-                switch (d_phase)
-                {
-                    case dungeonSelect:
-                        break;
-                    case UseItem:
-                        break;
-                    case battle:
-                            battle 내부
-                             while(Player.isDead!=true || CreateMonster.Length != 0) 
-                        break;
-                    case getOut;
-                        break;
-                }
-            }while
-            
-            battel 내부
-            뷰
-            for(int cnt = 0; cnt < CreateMonster.Length; cnt++)
-            {
-                if(CreateMonster[cnt].IsDead == true)
-                { 
-                    출력은 하는데  LV.3 공허충 Dead 로 나오도록
-                }
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
             }
 
-            전투
-            for(int cnt = 0; cnt < CreateMonster.Length; cnt++)
-            {
-                if(CreateMonster[cnt].IsDead != true)
-                { 
-                    전투
-                }
-            }
-            
-            }
-             */
-
-            //선택
-
-            //던전 내
         }
-
-        //외부로 화면 출력코드를 빼기
-
         void BattleMonster(int level)
         {
 
         }
-        public void Battle() { }
+
 
         static int CheckValidInput(int min, int max)
         {
