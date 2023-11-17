@@ -22,6 +22,8 @@ namespace text_rpg.View
             Console.WriteLine(" /        \\  |_> > __ \\|  | \\/|  |  / __ \\_  |    `   \\  |  /   |  \\/ /_/  >  ___(  <_> )   |  \\");
             Console.WriteLine("/_______  /   __(____  /__|   |__| (____  / /_______  /____/|___|  /\\___  / \\___  >____/|___|  /");
             Console.WriteLine("        \\/|__|       \\/                 \\/          \\/           \\//_____/      \\/           \\/");
+            Console.WriteLine();
+            Console.WriteLine("시작하시려면 아무 키나 누르세요");
         }
     }
 }

@@ -62,6 +62,7 @@ namespace text_rpg.Controller
                     case GameStages.Intro:
                         _introView.View();
                         Console.ReadKey();
+                        CurrentStage = GameStages.Login;
                         break;
 
                     case GameStages.Login:
