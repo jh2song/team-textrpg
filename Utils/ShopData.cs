@@ -42,6 +42,7 @@ namespace text_rpg.Utils
                         else
                         {
                             consumDialogue = new string[data.Length];
+
                             for (int i = 0; i < data.Length; i++)
                             {
                                 consumDialogue[i] = data[i];

@@ -38,8 +38,6 @@ namespace TextRPGGame
             }
 
         }
-
-
         static public void Visit(Name nam)
         {
             name = nam;
@@ -73,7 +71,7 @@ namespace TextRPGGame
             Console.WriteLine("0.나가기");
             Console.WriteLine();
             Console.Write(">> ");
-           
+
 
             switch (CheckValidInput(0, 2))
             {
@@ -91,7 +89,7 @@ namespace TextRPGGame
         }
 
         static void GiveMeMoney()
-        { 
+        {
         }
 
         static void TakeMyMoney() // 템고르기
@@ -130,8 +128,6 @@ namespace TextRPGGame
                                 player.inven.Add(catalog[num]);
 
                                 int i = catalog[num].Id;
-
-                                //    if (--catalog[num] <= 0) catalog[num] = null; 물건 판매갯수 설정되면 추가
 
                                 Console.Clear();
                                 Console.WriteLine(dialogue[0]);
@@ -209,7 +205,7 @@ namespace TextRPGGame
             switch (CheckValidInput(0, 1))
             {
                 case 1:
-                  //  LookMyItem();
+                    //  LookMyItem();
                     break;
                 case 0:
                     Open();
@@ -218,9 +214,9 @@ namespace TextRPGGame
 
         }
 
-    
 
-    static void BuyScreen() // 구매화면
+
+        static void BuyScreen() // 구매화면
         {
             Console.WriteLine("[           판매목록           ]");
             Console.WriteLine();
@@ -245,24 +241,22 @@ namespace TextRPGGame
             Console.WriteLine();
 
 
-            if (player.Equipment != null)
+            for (int i = 0; i < player.inven.Count; i++) // 장비 목록
             {
-                for (int i = 0; i < player.Equipment.Count; i++) // 장비 목록
+                if (player.inven[i] != null && player.inven[i].Type == Define.ItemType.Equip && !player.inven[i].IsEquipped) 
                 {
-                    if (player.Equipment[i] != null && true) // true에 착용중인 장비가 아니라면 넣기
-                    {
-                        Console.WriteLine($"{i + 1}. 판매가 : {player.Equipment[i].ItemPrice / 2}원 | {player.Equipment[i].Name}");
-                    }
+                    Console.WriteLine($"{i + 1}. 판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
                 }
             }
-            if (player.Inven != null)
+
+            for (int i = 0; i < player.inven.Count; i++) // 소모품
             {
-                for (int i = 0; i < player.Inven.Count; i++) // 소모품목록
+                if (player.inven[i] != null && player.inven[i].Type == Define.ItemType.Consum) 
                 {
-                    if (player.Inven[i] != null)
-                        Console.WriteLine($"{i + 1}. 판매가 : {player.Inven[i].ItemPrice / 2}원 | {player.Inven[i].Name}");
+                    Console.WriteLine($"{i + 1}. 판매가 : {player.inven[i].ItemPrice / 2}원 | {player.inven[i].Name}");
                 }
             }
+
 
             Console.WriteLine();
             Console.WriteLine($"소지금 : {player.Gold} ");

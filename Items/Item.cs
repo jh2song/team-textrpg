@@ -11,7 +11,7 @@ namespace text_rpg.Items
 {
     internal class Item
     {
-        public Define.ItemType Type { get; set; }
+        public Define.ItemType Type;
 
         public int Id { get; set; }
         public string Name { get; set; }
