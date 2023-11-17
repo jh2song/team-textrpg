@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using text_rpg.Utils;
+using text_rpg.View;
 
 namespace text_rpg.Controller
 {
@@ -10,6 +12,8 @@ namespace text_rpg.Controller
     {
         private string _id;
         private string _password;
+
+        private LoginView _loginView = new LoginView();
 
         public bool Load()
         {
@@ -25,7 +29,7 @@ namespace text_rpg.Controller
         public void Login()
         {
 
-            MainController.getInst().CurrentStage = 
+            MainController.getInst().CurrentStage = Define.GameStages.Base;
         }
     }
 }

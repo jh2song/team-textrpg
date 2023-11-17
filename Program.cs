@@ -13,7 +13,7 @@ namespace text_rpg
 
             bc.LoadMosters();
             bc.StartDungeon(2);
-
+            bc.dungeonEnter();
             MainController.getInst().Start();
 
         }

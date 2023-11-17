@@ -16,6 +16,8 @@ namespace text_rpg.Characters
         public int LevelUpExp { get; set; }
         public List<Skill> Skills { get; set; }
 
+        public Player() { 
+        }
         public Player(string name, int level, int attack, int defence, int hp, int gold, int critRate,int missRate) { 
             Name = name;
             Level = level;

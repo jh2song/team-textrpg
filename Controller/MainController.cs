@@ -40,7 +40,7 @@ namespace text_rpg.Controller
         #endregion
 
         #region GameLogic
-        public Player player = new Player();
+        public Player player = new Player("버스타조", 1, 10, 5, 100, 1500, 5, 5);
 
         public Define.GameStages CurrentStage = Define.GameStages.Intro;
         #endregion
