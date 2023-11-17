@@ -18,8 +18,9 @@ namespace text_rpg.Characters
 
         public Player() { 
         }
-        public Player(string name, int level, int attack, int defence, int hp, int gold, int critRate,int missRate) { 
+        public Player(string name, string class1, int level, int attack, int defence, int hp, int gold, int critRate, int missRate) { 
             Name = name;
+            Class = class1;
             Level = level;
             Attack = attack;
             Defence = defence;

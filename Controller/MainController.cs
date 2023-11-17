@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using text_rpg.Characters;
+using text_rpg.Items;
 using text_rpg.Utils;
 using text_rpg.View;
 using static text_rpg.Utils.Define;
@@ -40,8 +41,9 @@ namespace text_rpg.Controller
         #endregion
 
         #region GameLogic
-        public Player player = new Player("버스타조", 1, 10, 5, 100, 1500, 5, 5);
-
+        //public Player player = new Player("버스타조", 1, 10, 5, 100, 1500, 5, 5);
+        //test
+        public Equipment equip = new Equipment();
         public Define.GameStages CurrentStage = Define.GameStages.Intro;
         #endregion
 
@@ -49,12 +51,6 @@ namespace text_rpg.Controller
         {
             Console.CursorVisible = false;
 
-
-            Update();
-        }
-
-        public void Update()
-        {
             while (true)
             {
                 switch (CurrentStage)
@@ -62,11 +58,14 @@ namespace text_rpg.Controller
                     case GameStages.Intro:
                         _introView.View();
                         Console.ReadKey();
+                        MainController.getInst().CurrentStage = Define.GameStages.Login;
                         break;
 
                     case GameStages.Login:
-                        _loginView.View();
                         LoginController.Login();
+                        Console.ReadKey();
+                        _loginView.View(LoginController._id,LoginController.PlayerData);
+                        
                         break;
 
                     case GameStages.Base:
@@ -75,7 +74,7 @@ namespace text_rpg.Controller
                         break;
 
                     case GameStages.Stat:
-                        _statView.View();
+                        _statView.View(LoginController.PlayerData, equip);
                         StatController.Choice();
                         break;
 
