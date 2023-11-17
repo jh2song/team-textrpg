@@ -24,8 +24,6 @@ namespace text_rpg.Controller
 
         public void Login()
         {
-
-            MainController.getInst().CurrentStage = 
         }
     }
 }
