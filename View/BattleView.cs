@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using text_rpg.Characters;
+using text_rpg.Controller;
 
 namespace text_rpg.View
 {
@@ -11,7 +12,7 @@ namespace text_rpg.View
     {
         public void View(List<Monster> monsters)
         {
-
+            
         }
     }
 }

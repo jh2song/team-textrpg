@@ -48,6 +48,8 @@ namespace text_rpg.Controller
         public void Start()
         {
             Console.CursorVisible = false;
+
+
             Update();
         }
 
@@ -59,6 +61,7 @@ namespace text_rpg.Controller
                 {
                     case GameStages.Intro:
                         _introView.View();
+                        Console.ReadKey();
                         break;
 
                     case GameStages.Login:
@@ -81,7 +84,9 @@ namespace text_rpg.Controller
                         break;
                 }
 
-                Thread.Sleep(1000);
+                // Test
+                // 
+                // Thread.Sleep(1000);
                 Console.Clear();
             }
         }
