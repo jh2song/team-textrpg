@@ -10,8 +10,6 @@ namespace text_rpg.Controller
 {
     internal class BattleController
     {
-        public Player player = MainController.getInst().player;
-
         public List<Monster> Monsters;
         private BattleView _battleView;
 

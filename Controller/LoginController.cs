@@ -9,14 +9,11 @@ namespace text_rpg.Controller
 {
     internal class LoginController
     {
-        Player player = MainController.getInst().player;
-
         private string _id;
         private string _password;
 
         public bool Load()
         {
-
             return false;
         }
 

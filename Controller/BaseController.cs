@@ -9,11 +9,8 @@ namespace text_rpg.Controller
 {
     internal class BaseController
     {
-        Player player = MainController.getInst().player;
-
         public void Choice()
         {
-
         }
     }
 }

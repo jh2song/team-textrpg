@@ -9,11 +9,9 @@ namespace text_rpg.Controller
 {
     internal class StatController
     {
-        Player player = MainController.getInst().player;
-
         public void Choice()
         {
-            
+
         }
     }
 }
